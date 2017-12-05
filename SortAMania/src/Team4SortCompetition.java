@@ -24,7 +24,7 @@ public class Team4SortCompetition extends HelperMethods{
 			test2[i] = s;
 		}
 		long startTime = System.nanoTime();
-		System.out.println(challengeOne(test1));
+		System.out.println(challengeTwo(test2,"oihdw"));
 		long endTime = System.nanoTime();
 		long totalTime = endTime - startTime;
 		System.out.println("Time Take in nanoseconds: " + totalTime);
@@ -35,9 +35,15 @@ public class Team4SortCompetition extends HelperMethods{
 		insertionSort(arr);
 		return getMedian(arr);
 	}
-	public static int challengeTwo(int[]arr, String query)
+	public static int challengeTwo(String[]arr, String query)
 	{
-		return 0;
+		arr = mergeSort(arr);
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(arr[i]==query)
+				return i;
+		}
+		return -1;
 	}
 	public static int challengeThree(int[]arr)
 	{
