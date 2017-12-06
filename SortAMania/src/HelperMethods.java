@@ -119,6 +119,7 @@ public abstract class HelperMethods {
 			swap(list1,index,j);
 		}
 	}
+	//bubble
 	public static void bubbleSort(String[]list1)
 	{
 		boolean swap = true;
@@ -128,6 +129,26 @@ public abstract class HelperMethods {
 			for(int i = 0; i < list1.length-1; i++)
 			{
 				if(list1[i].compareTo(list1[i+1])>0)
+				{
+					swap(list1,i+1,i);
+					count++;
+				}
+			}
+			if(count == 0)
+			{
+				swap = false;
+			}
+		}
+	}
+	public static void bubbleSort(int[]list1)
+	{
+		boolean swap = true;
+		while(swap)
+		{
+			int count = 0;
+			for(int i = 0; i < list1.length-1; i++)
+			{
+				if(list1[i]>list1[i+1])
 				{
 					swap(list1,i+1,i);
 					count++;

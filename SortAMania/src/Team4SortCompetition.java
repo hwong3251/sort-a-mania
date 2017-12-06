@@ -6,12 +6,15 @@ import java.util.Random;
 public class Team4SortCompetition extends HelperMethods{
 	public static void main(String[]args)
 	{
+		long startTime, endTime, totalTime;
+		//test1
 		int[] test1 = new int[10000];
-		String[] test2 = new String[10000];
 		for (int i = 0; i < test1.length; i++)
 		{
 			test1[i] = (int) Math.floor(Math.random()*10001);
 		}
+		//test2
+		String[] test2 = new String[10000];
 		for (int i = 0; i < test2.length;i++) 
 		{
 			String s = "";
@@ -23,11 +26,40 @@ public class Team4SortCompetition extends HelperMethods{
 			}
 			test2[i] = s;
 		}
-		long startTime = System.nanoTime();
-		System.out.println(challengeTwo(test2,"oihdw"));
-		long endTime = System.nanoTime();
-		long totalTime = endTime - startTime;
+		//test3
+		int[]test3 = new int[10000];	
+		for (int i = 0; i < test1.length; i++)
+		{
+			if(i<=((int)test1.length*0.75))
+			{
+				test1[i] = i;
+			}
+			else
+			{
+				test1[i] = (int) Math.floor(Math.random()*10001);
+			}
+
+		}
+		
+		startTime = System.nanoTime();
+		System.out.println(challengeOne(test1));
+		endTime = System.nanoTime();
+		totalTime = endTime - startTime;
 		System.out.println("Time Take in nanoseconds: " + totalTime);
+		
+		startTime = System.nanoTime();
+		System.out.println(challengeTwo(test2,"oihdw"));
+		endTime = System.nanoTime();
+		totalTime = endTime - startTime;
+		System.out.println("Time Take in nanoseconds: " + totalTime);
+		
+		
+		startTime = System.nanoTime();
+		System.out.println(challengeThree(test3));
+		endTime = System.nanoTime();
+		totalTime = endTime - startTime;
+		System.out.println("Time Take in nanoseconds: " + totalTime);
+
 
 	}
 	public static int challengeOne(int[]arr)
@@ -45,9 +77,11 @@ public class Team4SortCompetition extends HelperMethods{
 		}
 		return -1;
 	}
+	//Mostly Sorted
 	public static int challengeThree(int[]arr)
 	{
-		return 0;
+		bubbleSort(arr);
+		return getMedian(arr);
 	}
 	public int challengeFour(int[][] arr)
 	{
