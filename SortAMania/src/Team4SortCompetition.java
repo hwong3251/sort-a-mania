@@ -26,21 +26,12 @@ public class Team4SortCompetition extends HelperMethods{
 			}
 			test2[i] = s;
 		}
-		//test3
-		int[]test3 = new int[10000];	
-		for (int i = 0; i < test1.length; i++)
+		//test
+		int[] test3 = new int[10000];
+		for (int i = 0; i < test3.length; i++)
 		{
-			if(i<=((int)test1.length*0.75))
-			{
-				test1[i] = i;
-			}
-			else
-			{
-				test1[i] = (int) Math.floor(Math.random()*10001);
-			}
-
+			test1[i] = (int) Math.floor(Math.random()*10001);
 		}
-		
 		startTime = System.nanoTime();
 		System.out.println(challengeOne(test1));
 		endTime = System.nanoTime();
