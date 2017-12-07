@@ -49,6 +49,53 @@ public abstract class HelperMethods {
 		}
 		return newArr;
 	}
+	public static int[] merge(int[]list1, int[]list2)
+	{
+		int[]newArr = new int[list1.length+list2.length];
+		int i = 0;
+		int j = 0;
+		int x = 0;
+		while(i < list1.length && j < list2.length)
+		{
+			if(list1[i] < list2[j])
+			{
+				newArr[x]=list1[i];
+				i++;
+				x++;
+			}
+			else if(list1[i] > list2[j])
+			{
+				newArr[x]=list2[j];
+				j++;
+				x++;
+			}
+			else if(list1[i] == list2[j])
+			{
+				newArr[x] = list1[i];
+				newArr[x+1] = list2[j];
+				i++;
+				j++;
+				x+=2;
+			}
+		}
+		if( i < list1.length)
+		{
+			for( int k = i;k < list1.length;k++)
+			{
+				newArr[x] = list1[k];
+				x++;
+			}
+		}
+		if( j < list2.length)
+		{
+			for( int k = j;k < list2.length;k++)
+			{
+				newArr[x] = list2[k];
+				x++;
+			}
+		}
+		return newArr;
+	}
 	//mergeSort
 	public static String [] mergeSort(String [] list)
 	{
@@ -60,6 +107,21 @@ public abstract class HelperMethods {
 		{
 			String[]a1 = Arrays.copyOfRange(list, 0, list.length/2);
 			String[]a2 = Arrays.copyOfRange(list, list.length/2, list.length);
+			a1 = mergeSort(a1);
+			a2 = mergeSort(a2);
+			return merge(a1, a2);
+		}
+	}
+	public static int[] mergeSort(int [] list)
+	{
+		if(list.length == 1)
+		{
+			return list;
+		}
+		else
+		{
+			int[]a1 = Arrays.copyOfRange(list, 0, list.length/2);
+			int[]a2 = Arrays.copyOfRange(list, list.length/2, list.length);
 			a1 = mergeSort(a1);
 			a2 = mergeSort(a2);
 			return merge(a1, a2);
@@ -179,9 +241,15 @@ public abstract class HelperMethods {
 		arr[i] = arr[j];
 		arr[j] = n;
 	}
+	//media
 	public static int getMedian(int[] arr)
 	{
-		int index = arr.length/2;
-		return arr[index];
+		int median;
+		if (arr.length % 2 == 0)
+		    median = ((int)arr[arr.length/2] + (int)arr[arr.length/2 - 1])/2;
+		else
+		    median = (int) arr[arr.length/2];
+		
+		return median;
 	}
 }
